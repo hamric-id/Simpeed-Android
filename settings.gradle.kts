@@ -24,4 +24,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Simpeed"
 include(":app")
-include(":simpeed-watch")
+include(":app-wear")
+include(":core")

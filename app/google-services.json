@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "53932834607",
+    "project_id": "simpeed-2026",
+    "storage_bucket": "simpeed-2026.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53932834607:android:9987b83920973b253a2bda",
+        "android_client_info": {
+          "package_name": "com.hamric.simpeed"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACsm6AVOHl_ITROrbDoYFAIWm-XxRUwWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
