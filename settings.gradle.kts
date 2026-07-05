@@ -26,3 +26,6 @@ rootProject.name = "Simpeed"
 include(":app")
 include(":app-wear")
 include(":core")
+include(":common-ui")
+include(":feature-login")
+include(":feature-speedometer")

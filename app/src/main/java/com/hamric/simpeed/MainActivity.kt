@@ -15,9 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.hamric.simpeed.presentation.login.LoginScreen
-import com.hamric.simpeed.presentation.speedometer.SpeedometerScreen
-import com.hamric.simpeed.ui.theme.SimpeedTheme
+import com.hamric.simpeed.feature.login.LoginScreen
+import com.hamric.simpeed.feature.speedometer.SpeedometerScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,14 +24,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            SimpeedTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    AppNavigation()
-                }
-            }
+            AppNavigation()
         }
     }
 }

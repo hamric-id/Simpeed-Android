@@ -1,4 +1,4 @@
-package com.hamric.simpeed.presentation.login
+package com.hamric.simpeed.feature.login
 
 import com.google.firebase.auth.FirebaseUser
 

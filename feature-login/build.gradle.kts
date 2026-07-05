@@ -7,8 +7,10 @@ plugins {
 }
 
 android {
-    namespace = "com.hamric.simpeed.core"
-    compileSdk = 35
+    namespace = "com.hamric.simpeed.feature.login"
+    compileSdk {
+        version = release(35)
+    }
 
     defaultConfig {
         minSdk = 30
@@ -28,21 +30,28 @@ android {
     buildFeatures {
         compose = true
     }
+
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.kotlinx.coroutines)
+    implementation(project(":core"))
+    implementation(project(":common-ui"))
+
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.compose.material.icons.extended)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.navigation.compose)
+
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 
-    // Firebase
+    implementation(libs.kotlinx.coroutines)
+
+    implementation(libs.play.services.auth)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
-    implementation(libs.play.services.auth)
-
-    testImplementation(libs.junit)
-    testImplementation(libs.mockk)
-    testImplementation(libs.google.truth)
-    testImplementation(libs.kotlinx.coroutines.test)
 }
