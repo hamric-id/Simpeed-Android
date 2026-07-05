@@ -28,6 +28,8 @@ material = "1.10.0"
 playServicesAuth = "21.2.0"
 googleServices = "4.4.2"
 crashlyticsPlugin = "3.0.7"
+archCoreTesting = "2.2.0"
+cashTurbine = "1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -72,6 +74,8 @@ play-services-auth = { group = "com.google.android.gms", name = "play-services-a
 facebook-android-sdk = { group = "com.facebook.android", name = "facebook-android-sdk", version.ref = "facebookAndroidSdk" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-arch-core-testing = { group = "androidx.arch.core", name = "core-testing", version.ref = "archCoreTesting" }
+cash-turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "cashTurbine" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

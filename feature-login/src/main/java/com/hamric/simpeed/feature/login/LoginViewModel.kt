@@ -58,13 +58,14 @@ class LoginViewModel @Inject constructor(
                     _effect.emit(LoginEffect.NavigateToSpeedometer)
                 }
             } catch (e: Exception) {
+                val errorMessage = "Auth check failed: ${e.message}"
                 _state.update {
                     it.copy(
                         isLoading = false,
-                        error = e.message ?: "Failed to check auth status"
+                        error = errorMessage
                     )
                 }
-                _effect.emit(LoginEffect.ShowError("Auth check failed: ${e.message}"))
+                _effect.emit(LoginEffect.ShowError(errorMessage))
             }
         }
     }
@@ -84,13 +85,14 @@ class LoginViewModel @Inject constructor(
                 }
                 _effect.emit(LoginEffect.NavigateToSpeedometer)
             } catch (e: Exception) {
+                val errorMessage = "Sign-in failed: ${e.message}"
                 _state.update {
                     it.copy(
                         isLoading = false,
-                        error = e.message ?: "Google Sign-In failed"
+                        error = errorMessage
                     )
                 }
-                _effect.emit(LoginEffect.ShowError("Sign-in failed: ${e.message}"))
+                _effect.emit(LoginEffect.ShowError(errorMessage))
             }
         }
     }
@@ -104,13 +106,14 @@ class LoginViewModel @Inject constructor(
                     LoginState()
                 }
             } catch (e: Exception) {
+                val errorMessage = "Sign out failed: ${e.message}"
                 _state.update {
                     it.copy(
                         isLoading = false,
-                        error = e.message ?: "Sign out failed"
+                        error = errorMessage
                     )
                 }
-                _effect.emit(LoginEffect.ShowError("Sign out failed: ${e.message}"))
+                _effect.emit(LoginEffect.ShowError(errorMessage))
             }
         }
     }

@@ -54,4 +54,11 @@ dependencies {
     implementation(libs.play.services.auth)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.google.truth)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.androidx.arch.core.testing)
+    testImplementation(libs.cash.turbine)
 }
