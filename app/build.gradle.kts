@@ -94,16 +94,18 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 
+    //firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
+    implementation(libs.play.services.auth)
     implementation(libs.firebase.crashlytics)
     implementation(libs.firebase.analytics)
-    implementation(libs.play.services.auth)
-    implementation(libs.facebook.android.sdk)
 
     testImplementation(libs.junit)
     testImplementation(libs.mockk)
     testImplementation(libs.google.truth)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
+
+    implementation(project(":core"))
 }
