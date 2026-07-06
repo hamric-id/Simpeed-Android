@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.dagger.hilt.android)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.services)
     alias(libs.plugins.crashlytics)
@@ -19,7 +19,16 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.hamric.simpeed.CustomTestRunner"
+    }
+
+    packaging {
+        resources {
+            excludes += "META-INF/LICENSE.md"
+            excludes += "META-INF/LICENSE"
+            excludes += "META-INF/NOTICE.md"
+            excludes += "META-INF/NOTICE"
+        }
     }
 
     buildTypes {
@@ -52,11 +61,6 @@ dependencies {
     implementation(project(":common-ui"))
     implementation(project(":core"))
 
-    // Feature modules
-    implementation(project(":feature-login"))
-    implementation(project(":feature-speedometer"))
-    implementation(project(":common-ui"))
-    implementation(project(":core"))
 
     // Compose
     implementation(platform(libs.androidx.compose.bom))
@@ -70,21 +74,39 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.navigation.compose)
 
-    // Hilt
-    implementation(libs.dagger.hilt)
-    ksp(libs.dagger.hilt.compiler)
-    implementation(libs.androidx.hilt.navigation.compose)
-
+    // Firebase
+    implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
 
+    // Hilt
+    implementation(libs.dagger.hilt.android)
+    ksp(libs.dagger.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+
     // Testing
-    testImplementation(libs.junit)
-    testImplementation(libs.mockk)
-    testImplementation(libs.google.truth)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.dagger.hilt.android.testing){
+        exclude(group = "org.junit.jupiter")
+        exclude(group = "org.junit.platform")
+    }
+    kspAndroidTest(libs.dagger.hilt.android.compiler)
+
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    androidTestImplementation(libs.androidx.compose.ui.test.manifest)
+    androidTestImplementation(libs.mockk){
+        exclude(group = "org.junit.jupiter")
+        exclude(group = "org.junit.platform")
+    }
+
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.androidx.test.espresso.core){
+        exclude(group = "androidx.test.espresso", module = "espresso-idling-resource")
+    }
+
+    testImplementation(libs.junit)
+
+
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 }

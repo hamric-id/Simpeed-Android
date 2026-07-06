@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.dagger.hilt.android)
 }
 
 android {
@@ -31,7 +31,7 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlinx.coroutines)
-    implementation(libs.dagger.hilt)
+    implementation(libs.dagger.hilt.android)
     ksp(libs.dagger.hilt.compiler)
 
     // Firebase
@@ -40,7 +40,6 @@ dependencies {
     implementation(libs.play.services.auth)
 
     testImplementation(libs.junit)
-    testImplementation(libs.mockk)
     testImplementation(libs.google.truth)
-    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockk)
 }

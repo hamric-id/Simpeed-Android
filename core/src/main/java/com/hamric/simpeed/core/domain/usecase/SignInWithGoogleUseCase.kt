@@ -7,7 +7,7 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
-class SignInWithGoogleUseCase @Inject constructor() {
+open class SignInWithGoogleUseCase @Inject constructor() {
     suspend operator fun invoke(idToken: String): FirebaseUser {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         val authResult = Firebase.auth.signInWithCredential(credential).await()
