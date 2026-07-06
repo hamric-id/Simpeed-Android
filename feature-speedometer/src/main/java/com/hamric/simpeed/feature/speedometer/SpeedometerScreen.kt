@@ -61,7 +61,6 @@ fun SpeedometerScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                // Speed Display (Analog Gauge)
                 SpeedGauge(
                     speed = state.speed,
                     maxSpeed = state.maxSpeed,
@@ -70,7 +69,6 @@ fun SpeedometerScreen(
 
                 Spacer(modifier = Modifier.height(32.dp))
 
-                // Speed Value
                 Text(
                     text = "${state.speed.toInt()} ${state.unit}",
                     fontSize = 32.sp,
@@ -79,7 +77,6 @@ fun SpeedometerScreen(
 
                 Spacer(modifier = Modifier.height(32.dp))
 
-                // Controls
                 Text(
                     text = "Adjust Speed",
                     fontSize = 16.sp,
@@ -124,15 +121,12 @@ fun SpeedGauge(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        // Simple Arc for speed gauge
         androidx.compose.foundation.Canvas(
             modifier = modifier
         ) {
-            // Draw arc
             val strokeWidth = size.width * 0.1f
             val radius = size.width / 2 - strokeWidth / 2
 
-            // Background arc
             drawArc(
                 color = Color.Gray.copy(alpha = 0.2f),
                 startAngle = 135f,
@@ -152,7 +146,6 @@ fun SpeedGauge(
                 )
             )
 
-            // Speed arc
             drawArc(
                 color = color,
                 startAngle = 135f,
@@ -173,7 +166,6 @@ fun SpeedGauge(
             )
         }
 
-        // Speed text overlay
         androidx.compose.foundation.layout.Box(
             modifier = modifier
         ) {
