@@ -19,17 +19,9 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "com.hamric.simpeed.CustomTestRunner"
+        testInstrumentationRunner = "dagger.hilt.android.testing.HiltTestRunner"
     }
 
-    packaging {
-        resources {
-            excludes += "META-INF/LICENSE.md"
-            excludes += "META-INF/LICENSE"
-            excludes += "META-INF/NOTICE.md"
-            excludes += "META-INF/NOTICE"
-        }
-    }
 
     buildTypes {
         release {
@@ -84,25 +76,16 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
 
     // Testing
-    androidTestImplementation(libs.dagger.hilt.android.testing){
-        exclude(group = "org.junit.jupiter")
-        exclude(group = "org.junit.platform")
-    }
+    androidTestImplementation(libs.dagger.hilt.android.testing)
     kspAndroidTest(libs.dagger.hilt.android.compiler)
 
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.compose.ui.test.manifest)
-    androidTestImplementation(libs.mockk){
-        exclude(group = "org.junit.jupiter")
-        exclude(group = "org.junit.platform")
-    }
 
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.androidx.test.espresso.core){
-        exclude(group = "androidx.test.espresso", module = "espresso-idling-resource")
-    }
+    androidTestImplementation(libs.androidx.test.espresso.core)
 
     testImplementation(libs.junit)
 

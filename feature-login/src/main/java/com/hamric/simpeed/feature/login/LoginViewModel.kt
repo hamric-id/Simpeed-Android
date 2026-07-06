@@ -17,10 +17,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
+    private val configProvider: LoginConfigProvider,
     private val signInWithGoogleUseCase: SignInWithGoogleUseCase,
     private val signOutUseCase: SignOutUseCase,
     private val checkAuthStatusUseCase: CheckAuthStatusUseCase
 ) : ViewModel() {
+
+    fun getDefault_web_client_id(): String = configProvider.getDefault_web_client_id()
 
     private val _state = MutableStateFlow(LoginState())
     val state: StateFlow<LoginState> = _state.asStateFlow()

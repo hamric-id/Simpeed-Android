@@ -1,13 +1,18 @@
 package com.hamric.simpeed.di
 
+import com.hamric.simpeed.AppLoginConfigProvider
+import com.hamric.simpeed.feature.login.LoginConfigProvider
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+abstract class AppModule {
 
+    @Binds
+    abstract fun bindLoginConfigProvider(
+        provider: AppLoginConfigProvider
+    ): LoginConfigProvider
 }
